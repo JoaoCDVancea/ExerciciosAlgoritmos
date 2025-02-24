@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        div {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+        }
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onde eu moro</title>
+</head>
+<body>
+    <h1>Onde eu moro</h1>
+    <div>
+        <div>
+            <p>Insira o nome de sua Rua/Avenida/Vila: </p>
+            <input type="text" id="ipt_logradouro">
+        </div>
+        <div>
+            <p>Insira o número de sua casa: </p>
+            <input type="text" id="ipt_numero">
+        </div>
+        <button onclick="exibirMensagem()">Onde eu moro</button>
+    </div>
+</body>
+</html>
+<script>
+    function exibirMensagem() {
+        alert('Seu logradouro é ' + ipt_logradouro.value);
+        alert('O número do seu logradouro é ' + ipt_numero.value);
+    }
+</script>

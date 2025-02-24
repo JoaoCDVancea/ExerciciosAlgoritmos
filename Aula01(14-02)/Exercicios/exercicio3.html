@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        div {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+        }
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futebol</title>
+</head>
+<body>
+    <h1>Futebol</h1>
+    <div>
+        <div>
+            <p>Insira o time para que você torce:</p>
+            <input type="text" id="ipt_nomeTime">
+        </div>
+        <div>
+            <p>Insira quantos títulos ele possui: </p>
+            <input type="text" id="ipt_qtdTitulos">
+        </div>
+        <button onclick="exibirMensagem()">Amo meu Time</button>
+    </div>  
+</body>
+</html>
+<script>
+    function exibirMensagem() {
+        alert('O time ' + ipt_nomeTime.value + ' tem ' + ipt_qtdTitulos.value + ' títulos');
+    }
+</script>
