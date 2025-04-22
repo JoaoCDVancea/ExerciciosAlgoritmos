@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        div {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+        }
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculadora Peso e Altura</title>
+</head>
+<body>
+    <h1>Calculadora de Peso e Altura</h1>
+    <div>
+        <div>
+            <p>Insira seu peso: </p>
+            <input type="text" id="ipt_peso">
+        </div>
+        <div>
+            <p>Insira sua altura: </p>
+            <input type="text" id="ipt_altura">
+        </div>
+        <button onclick="exibirMensagem()">Fale comigo</button>
+    </div>
+</body>
+</html>
+<script>
+    function exibirMensagem() {
+        alert('Você pesa ' + ipt_peso.value + 'kg e tem ' + ipt_altura.value + 'm de altura.');
+    }
+</script>

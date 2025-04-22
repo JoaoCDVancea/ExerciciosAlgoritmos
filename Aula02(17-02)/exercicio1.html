@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        div {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+        }
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Local e Nascimento</title>
+</head>
+<body>
+    <h1>Cadastro de Local e Nascimento</h1>
+    <div>
+        <div>
+            <p>Insira sua Cidade Natal: </p>
+            <input type="text" id="ipt_cidadeNascimento">
+        </div>
+        <div>
+            <p>Insira seu ano de nascimento: </p>
+            <input type="text" id="ipt_anoNascimento">
+        </div>
+        <button onclick="exibirMensagem()">Cadastrar</button>
+    </div>
+    
+</body>
+</html>
+<script>
+    function exibirMensagem() {
+        alert('Você nasceu na cidade de ' + ipt_cidadeNascimento.value + ' em ' + ipt_anoNascimento.value);
+    }
+</script>
