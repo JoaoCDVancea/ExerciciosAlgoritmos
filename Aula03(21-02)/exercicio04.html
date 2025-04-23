@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ki dos Sayajin</title>
+</head>
+
+<body>
+    <!--Este programa calcula o ki de um Sayajin em suas diferentes formas-->
+    <h1>O Ki dos Sayajins!</h1>
+    <div>
+        <div>
+            <p>Insira o nome do Sayajin: </p>
+            <input type="text" id="iptNomeSayajin">
+        </div>
+        <div>
+            <p>Insira o valor do ki padrão: </p>
+            <input type="number" id="iptValorKi">
+        </div>
+        <button onclick="exibirKi()">Ver ki em cada forma</button>
+    </div>
+    <div id="div_texto"></div>
+</body>
+
+</html>
+<script>
+    function exibirKi() {
+        var valorKI50 = (iptValorKi.value * 50);
+        var valorKI100 = (iptValorKi.value * 100);
+        div_texto.innerHTML = 'O ki de ' + iptNomeSayajin.value + ' na forma Super Sayajin é KI' + valorKI50 +
+        '<br>O ki de ' + iptNomeSayajin.value + ' na forma Super Sayajin 2 é KI' + valorKI100;
+    }
+</script>

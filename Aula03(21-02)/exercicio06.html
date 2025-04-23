@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<style>
+    body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+    }
+
+    input {
+        margin: 5px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora básica</title>
+</head>
+
+<body>
+    <!--Este programa é uma calculadora básica-->
+    <h1>Calculadora Básica</h1>
+    <div>
+        <input type="number" id="iptNumber1">
+        <input type="number" id="iptNumber2">
+
+        <button onclick="somar()" id="somar">Somar</button>
+        <button onclick="subtrair()" id="subtrair">Subtrair</button>
+        <button onclick="multiplicar()" id="multiplicar">Multiplicar</button>
+        <button onclick="dividir()" id="dividir">Dividir</button>
+
+    </div>
+    <div id="div_texto"></div>
+</body>
+
+</html>
+<script>
+    function somar() {
+        var soma = (Number(iptNumber1.value) + Number(iptNumber2.value));
+        div_texto.innerHTML = 'A soma entre ' + iptNumber1.value + ' e ' + iptNumber2.value + ' é ' + soma;
+    }
+    function subtrair() {
+        var subtracao = (Number(iptNumber1.value) - Number(iptNumber2.value));
+        div_texto.innerHTML = 'A diferença entre ' + iptNumber1.value + ' e ' + iptNumber2.value + ' é ' + subtracao;
+    }
+    function multiplicar() {
+        var produto = (Number(iptNumber1.value) * Number(iptNumber2.value));
+        div_texto.innerHTML = 'O produto entre ' + iptNumber1.value + ' e ' + iptNumber2.value + ' é ' + produto;
+    }
+    function dividir() {
+        var razao = (Number(iptNumber1.value) / Number(iptNumber2.value));
+        div_texto.innerHTML = 'A razão entre ' + iptNumber1.value + ' e ' + iptNumber2.value + ' é ' + razao;
+    }
+    
+</script>

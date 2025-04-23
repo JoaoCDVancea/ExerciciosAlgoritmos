@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza!</title>
+</head>
+
+<body>
+    <!--Este programa divide o valor de uma pizza entre amigos-->
+    <h1>Divindo a Pizza!</h1>
+    <div id="div">
+        <div>
+            <p>Insira o valor da pizza: </p>
+            <input type="number" id="iptValorPizza">
+        </div>
+        <div>
+            <p>Insira em quantos vocês estão: </p>
+            <input type="number" id="iptQtdAmigos">
+        </div>
+        <button onclick="calcular()">#lovePizza</button>
+    </div>
+    <div id="div_texto"></div>
+</body>
+
+</html>
+<script>
+    function calcular() {
+        var media = (iptValorPizza.value / iptQtdAmigos.value).toFixed(2);
+        div_texto.innerHTML = 'Cada um dos ' + iptQtdAmigos.value + ' vai pagar R$' + media;
+    }
+</script>

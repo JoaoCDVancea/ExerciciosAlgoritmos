@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Média SPTech</title>
+</head>
+
+<body>
+    <!--Este programa calcula a média da nota de um aluno da SPTech-->
+    <h1>Cálculo da Média na SPTech</h1>
+    <div>
+        <div>
+            <p>Insira o valor de sua nota na avaliação continuada: </p>
+            <input type="number" id="iptNotaContinuada">
+        </div>
+        <div>
+            <p>Insira o valor de sua nota em Pesquisa e Inovação: </p>
+            <input type="number" id="iptNotaPI">
+        </div>
+        <div>
+            <p>Insira seu nome: </p>
+            <input type="text" id="iptNomeAluno">
+        </div>
+        <button onclick="calcular()">Calcular média</button>
+    </div>
+    <div id="div_texto"></div>
+</body>
+
+</html>
+<script>
+    function calcular() {
+        var mediaNota = ((Number(iptNotaContinuada.value) * 0.4) + (Number(iptNotaPI.value) * 0.6) / 1)
+        div_texto.innerHTML = 'A média de ' + iptNomeAluno.value + ' será de ' + mediaNota;
+    }
+</script>

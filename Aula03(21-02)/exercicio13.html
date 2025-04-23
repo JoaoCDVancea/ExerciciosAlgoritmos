@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gastos com Transporte</title>
+</head>
+
+<body>
+    <!--Este programa calcula o quanto o usuário gasta mensalmente com transporte-->
+    <h1>Cálculo de Gastos com Transporte</h1>
+    <div>
+        <div>
+            <p>Insira o valor da passagem de ônibus: </p>
+            <input type="number" id="iptValorOnibus">
+        </div>
+        <div>
+            <p>Insira a quantidade de viagens que você realiza por mês: </p>
+            <input type="number" id="iptQtdViagens">
+        </div>
+        <div>
+            <p>Insira a distância da sua casa até o trabalho (em Km): </p>
+            <input type="number" id="iptDistancia">
+        </div>
+        <button onclick="calcularVT()">Calcular VT</button>
+    </div>
+    <div id="div_texto"></div>
+</body>
+
+</html>
+<script>
+    function calcularVT() {
+        valorOnibus = Number(iptValorOnibus.value);
+        qtdViagens = Number(iptQtdViagens.value);
+        distancia = Number(iptDistancia.value);
+        /* considere que uma viagem de Uber (99, cabify, etc) custa R$0,75 por km (ou seja, uma viagem de 10km custará R$7,50)
+        considere que o número de viagens de Uber (99, cabify, etc) que o usuário faz por mês é de 10% do número de viagens de ônibus (ou seja, se ele indicar que faz 50 viagens, considere 45 de ônibus e 5 de transporte de aplicativo) */
+        gastoMensalUber = (qtdViagens * 0.1) * (distancia * 0.75);
+        gastoMensalOnibus = (qtdViagens * 0.9) * valorOnibus;
+        valorMensalGasto = gastoMensalUber + gastoMensalOnibus;
+        div_texto.innerHTML = `Você vai gastar R$${valorMensalGasto} por mês com transporte`;
+    }
+</script>

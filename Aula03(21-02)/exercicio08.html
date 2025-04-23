@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Virtual</title>
+</head>
+
+<body>
+    <!--Simulador de transações bancárias aprimorado-->
+    <h1>Banco Virtual: Depósitos e Retiradas</h1>
+    <div>
+        <h2 id="saldoAtual">Saldo atual: R$0.00</h2>
+        <div>
+            <p>Insira o valor a ser depositado/retirado: </p>
+            <input type="number" id="iptValor">
+        </div>
+        <div>
+            <button onclick="depositar()">Depositar</button>
+            <button onclick="retirar()">Retirar</button>
+        </div>
+    </div>
+    <div id="div_texto"></div>
+</body>
+
+</html>
+<script>
+    saldo = 0.00;
+    function depositar() {
+        saldo += Number(iptValor.value);
+        saldoAtual.innerHTML = 'Saldo atual: R$' + saldo;
+        div_texto.innerHTML = 'Depósito de R$' + iptValor.value + ' efetuado!';
+    }
+    function retirar() {
+        saldo -= Number(iptValor.value);
+        saldoAtual.innerHTML = 'Saldo atual: R$' + saldo;
+        div_texto.innerHTML = 'Retirada de R$' + iptValor.value + ' efetuada!';
+    }
+</script>

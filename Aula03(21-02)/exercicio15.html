@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora IMC</title>
+</head>
+
+<body>
+    <!--Este programa é uma calculadora de IMC-->
+    <h1>Calculadora de IMC</h1>
+    <div>
+        <div>
+            <p>Insira o seu peso: </p>
+            <input type="number" id="iptPeso">
+        </div>
+        <div>
+            <p>Insira a sua altura (ex: 1.80): </p>
+            <input type="number" id="iptAltura">
+        </div>
+        <button onclick="calcularIMC()">Calcular IMC</button>
+        <div id="div_texto" style="text-align: center;"></div>
+    </div>
+</body>
+
+</html>
+<script>
+    function calcularIMC() {
+        valorPeso = Number(iptPeso.value);
+        valorAltura = Number(iptAltura.value);
+        valorIMC = valorPeso / (valorAltura * valorAltura);
+        div_texto.innerHTML = `Seu IMC é: ${valorIMC.toFixed(2)}`;
+    }
+</script>

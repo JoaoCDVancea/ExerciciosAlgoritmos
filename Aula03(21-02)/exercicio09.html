@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fases do sono</title>
+</head>
+
+<body>
+    <!--Este programa calcula o tempo de cada fase do sono-->
+    <h1>Calculadora fases do sono</h1>
+    <div>
+        <div>
+            <p>Insira quantas horas você dormiu: </p>
+            <input type="number" id="iptHorasDormidas">
+        </div>
+        <button onclick="calcularFaseSono()">Calcular Sono</button>
+    </div>
+    <div id="div_texto" style="text-align: center"></div>
+</body>
+
+</html>
+<script>
+    function calcularFaseSono() {
+        horas = iptHorasDormidas.value;
+        div_texto.innerHTML =
+            `Ao dormir ${horas} horas, você dormiu: <br>
+             ${horas * 0.05} horas na fase 1 <br>
+             ${horas * 0.45} horas na fase 2 <br>
+             ${horas * 0.30} horas na fase 3 <br>
+             ${horas * 0.20} horas na fase REM`;
+    }
+</script>

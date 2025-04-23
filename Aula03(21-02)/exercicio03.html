@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Economia Bilhete Único</title>
+</head>
+
+<body>
+    <!--Este programa calcula a economia de um estudante com o bilhete único-->
+    <h1>Economia com Bilhete Único</h1>
+    <div>
+        <div>
+            <p>Qual o valor da passagem? </p>
+            <input type="number" id="iptValorPassagem">
+        </div>
+        <div>
+            <p>Qual o número de viagens mensais? </p>
+            <input type="number" id="iptQtdViagens">
+        </div>
+        <button onclick="calcular()">Ver economia</button>
+    </div>
+    <div id="div_texto"></div>
+</body>
+
+</html>
+<script>
+    function calcular() {
+        var calculoEconomia = (iptValorPassagem.value / 2 * iptQtdViagens.value).toFixed(2);
+        div_texto.innerHTML = 'Você economizará R$' + calculoEconomia + ' por mês.';
+    }
+</script>

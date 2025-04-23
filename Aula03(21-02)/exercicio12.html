@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divisão Pizza</title>
+</head>
+
+<body>
+    <!--Este programa divide o valor de uma pizza(com gorjeta) entre amigos-->
+    <h1>Divisão Justa da Pizza (Com Gorjeta)</h1>
+    <div>
+        <div>
+            <p>Insira o valor da pizza: </p>
+            <input type="number" id="iptValorPizza">
+        </div>
+        <div>
+            <p>Insira o sabor da pizza: </p>
+            <input type="text" id="iptSaborPizza">
+        </div>
+        <div>
+            <p>Insira o número de pessoas que vão comer: </p>
+            <input type="number" id="iptQtdPessoas">
+        </div>
+        <button onclick="calcularValorPorAmigo()">Ver valor por amigo</button>
+    </div>
+    <div id="div_texto"></div>
+</body>
+
+</html>
+<script>
+    function calcularValorPorAmigo() {
+        valorPizza = Number(iptValorPizza.value);
+        valorPorAmigo = (valorPizza * 0.10 + valorPizza) / Number(iptQtdPessoas.value);
+        div_texto.innerHTML = `Cada amigo vai colaborar com R$${valorPorAmigo} para a pizza de ${iptSaborPizza.value}`;
+    }
+</script>

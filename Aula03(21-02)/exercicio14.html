@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformações Saiyajin</title>
+</head>
+
+<body>
+    <!--Este programa demonstra o aumento de poder de um Saiyajin conforme ele se transforma-->
+    <h1>Transformações Saiyajin e Poder de Luta</h1>
+    <div>
+        <div>
+            <p>Insira o "ki base" do Saiyajin: </p>
+            <input type="number" id="iptForcaBase">
+        </div>
+        <p style="text-align: center;">Transformar em: </p>
+        <div>
+            <button onclick="calculoSSJ()">SSJ</button>
+            <button onclick="calculoSSJ2()">SSJ2</button>
+            <button onclick="calculoSSJ3()">SSJ3</button>
+        </div>
+    </div>
+    <div id="div_texto"></div>
+</body>
+
+</html>
+<script>
+    function calculoSSJ() {
+        poderSayajin = Number(iptForcaBase.value) * 50;
+        div_texto.innerHTML = `Após se transformar em SSJ, o ki desse Saiyajin passa a ser de ${poderSayajin}`;
+    }
+    function calculoSSJ2() {
+        poderSayajin = Number(iptForcaBase.value) * 100;
+        div_texto.innerHTML = `Após se transformar em SSJ2, o ki desse Saiyajin passa a ser de ${poderSayajin}`;
+    }
+    function calculoSSJ3() {
+        poderSayajin = Number(iptForcaBase.value) * 200;
+        div_texto.innerHTML = `Após se transformar em SSJ3, o ki desse Saiyajin passa a ser de ${poderSayajin}`;
+    }
+</script>

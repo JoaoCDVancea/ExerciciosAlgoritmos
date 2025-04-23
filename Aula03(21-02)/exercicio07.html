@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transações Bancárias</title>
+</head>
+
+<body>
+    <!--Este programa é um simulador de transações bancárias-->
+    <h1>Simulador Transações Bancárias</h1>
+    <div>
+        <h2 id="saldoAtual">Saldo atual: R$0.00</h2>
+        <div>
+            <button onclick="receber100()">Receber 100</button>
+            <button onclick="pagar50()">Pagar 50</button>
+        </div>
+    </div>
+    <div id="div_texto"></div>
+</body>
+
+</html>
+<script>
+    var saldo = 0.00;
+    function receber100() {
+        saldo += 100;
+        saldoAtual.innerHTML = 'Saldo atual: R$' + saldo;
+        div_texto.innerHTML = 'Transferência de R$100 recebida!';
+    }
+    function pagar50() {
+        saldo -= 50;
+        saldoAtual.innerHTML = 'Saldo atual: R$' + saldo;
+        div_texto.innerHTML = 'Pagamento de R$50 efetuado!';
+    }
+</script>

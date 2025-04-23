@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados Eleitorais</title>
+</head>
+
+<body>
+    <!--Este programa calcula o resultado de uma eleição com base nos votos dados-->
+    <h1>Analisador de Resultados Eleitorais</h1>
+    <div>
+        <div>
+            <p>Insira a quantidade de votos do candidato A: </p>
+            <input type="number" id="iptVotosA">
+        </div>
+        <div>
+            <p>Insira a quantidade de votos do candidato B: </p>
+            <input type="number" id="iptVotosB">
+        </div>
+        <div>
+            <p>Insira a quantidade de votos brancos: </p>
+            <input type="number" id="iptVotosBrancos">
+        </div>
+        <div>
+            <p>Insira a quantidade de votos nulos: </p>
+            <input type="number" id="iptVotosNulos">
+        </div>
+        <button onclick="exibirResultado()">Resultado da Eleição</button>
+    </div>
+    <div id="div_texto" style="text-align: center;"></div>
+</body>
+
+</html>
+<script>
+    function exibirResultado() {
+        votosA = Number(iptVotosA.value);
+        votosB = Number(iptVotosB.value);
+        votosBrancos = Number(iptVotosBrancos.value);
+        votosNulos = Number(iptVotosNulos.value);
+        votosInvalidos = votosBrancos + votosNulos;
+        totalVotos = votosA + votosB + votosBrancos + votosNulos;
+        div_texto.innerHTML = `
+            Total de votos: ${totalVotos} <br>
+            Candidato A: ${votosA / totalVotos * 100}% (${votosA} votos) <br>
+            Candidato B: ${votosB / totalVotos * 100}% (${votosB} votos) <br>
+            Inválidos: ${votosInvalidos / totalVotos * 100}% (${votosInvalidos})` 
+    }
+</script>

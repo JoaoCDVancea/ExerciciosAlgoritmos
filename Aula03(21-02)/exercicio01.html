@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+    }
+</style>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aposentadoria</title>
+</head>
+
+<body>
+    <!--Este programa calcula quantos anos faltam para alguém se aposentar-->
+    <h1>Aposentadoria: Quanto falta?</h1>
+    <div>
+
+        <p>Insira sua idade: </p>
+        <input type="number" id="iptIdade">
+
+        <button onclick="aposentadoriaHomem()">Aposentadoria homem</button>
+        <button onclick="aposentadoriaMulher()">Aposentadoria Mulher</button>
+
+        
+    </div>
+    <div id="div_texto"></div>
+</body>
+
+</html>
+<script>
+    function aposentadoriaHomem() {
+        var idadeFaltante = (70 - Number(iptIdade.value));
+        div_texto.innerHTML = 'Faltam ' + idadeFaltante + ' anos para você se aposentar.'; 
+    }
+    function aposentadoriaMulher() {
+        var idadeFaltante = (60 - Number(iptIdade.value));
+        div_texto.innerHTML = 'Faltam ' + idadeFaltante + ' anos para você se aposentar.';
+    }
+</script>
