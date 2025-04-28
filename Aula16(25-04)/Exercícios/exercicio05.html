@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    button {
+        margin: 10px 0px 10px 0px;
+        padding: 10px;
+    }
+
+    .botoes {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Favoritos</title>
+</head>
+
+<body>
+    <h1>Painel de Favoritos: Seus Filmes em Destaque</h1>
+    <div>
+        <div>
+            <p>Insira os seus filmes favoritos em ordem decrescente! (Do que você mais gosta em diante)</p>
+            <input type="text" id="iptFilme">
+        </div>
+        <button onclick="adicionarFilme()">Adicionar Filme</button>
+    </div>
+    <div id="div_conteudo"></div>
+</body>
+
+</html>
+<script>
+    const filmes = [];
+
+    function adicionarFilme() {
+        let filme = iptFilme.value;
+
+        if (filme == '') {
+            alert(`Insira um filme válido`);
+            return;
+        }
+
+        filmes.push(filme);
+
+        div_conteudo.innerHTML = `Seu filme Favorito: ${filmes[0]} <br> Seu 3º filme favorito: `;
+
+        div_conteudo.innerHTML += filmes.length >= 3 ? `${filmes[2]}` : `Ainda não existe`;
+
+        div_conteudo.innerHTML += `<br> Total de filmes cadastrados: ${filmes.length}`;
+    }
+</script>

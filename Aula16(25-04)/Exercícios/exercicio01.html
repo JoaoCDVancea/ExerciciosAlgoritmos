@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    button {
+        margin: 10px 0px 10px 0px;
+        padding: 10px;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caça às Frutas</title>
+</head>
+
+<body>
+    <h1>Caça às Frutas: Descubra se está na Lista</h1>
+    <div>
+        <div>
+            <p>Digite o nome da fruta:</p>
+            <input type="text" id="iptFruta">
+        </div>
+        <button onclick="pesquisarFruta()">Pesquisar</button>
+    </div>
+    <div id="div_conteudo"></div>
+</body>
+
+</html>
+<script>
+    const frutas = ['banana', 'morango', 'uva', 'melancia']
+    function pesquisarFruta() {
+        let achouFruta = false;
+        let fruta = iptFruta.value;
+
+        for (i = 0; i < frutas.length; i++) {
+            achouFruta = frutas[i] == fruta.toLowerCase() ? true : false;
+
+            if (achouFruta) {
+                break;
+            }
+        }
+
+        div_conteudo.innerHTML = achouFruta ? `A fruta ${fruta} existe na lista.` : `Não existe a fruta ${fruta} na lista.`;
+    }
+</script>

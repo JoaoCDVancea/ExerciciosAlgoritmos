@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    button {
+        margin: 10px 0px 10px 0px;
+        padding: 10px;
+    }
+
+    .botoes {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Filmes Favoritos</title>
+</head>
+
+<body>
+    <h1>Top Filmes Favoritos: Do Mais Amado ao Menos</h1>
+    <div>
+        <div>
+            <p>Insira os seus filmes favoritos em ordem decrescente! (Do que você mais gosta em diante)</p>
+            <input type="text" id="iptFilme">
+        </div>
+        <button onclick="cadastrarFilme()">Cadastrar Filme</button>
+        <button onclick="verFavoritos()">Ver favoritos</button>
+    </div>
+
+    <div id="div_conteudo"></div>
+</body>
+
+</html>
+<script>
+    const filmes = [];
+
+    function cadastrarFilme() {
+        let filme = iptFilme.value;
+
+        if (filme == '') {
+            div_conteudo.innerHTML = `Insira um filme!`;
+            return;
+
+        }
+
+        filmes.push(filme);
+        div_conteudo.innerHTML = `Filme cadastrado com sucesso!`;
+    }
+
+    function verFavoritos() {
+        if (filmes.length == 0) {
+            div_conteudo.innerHTML = `Você ainda não cadastrou nenhum filme!`;
+            return;
+        }
+
+        div_conteudo.innerHTML = `Total: ${filmes.length} <br>`;
+
+        div_conteudo.innerHTML += `O filme que mais gosta é ${filmes[0]} <br>`;
+
+        div_conteudo.innerHTML += filmes.length > 1 ?  `E desses, o que menos gosta é ${filmes[filmes.length - 1]}` : ''
+    }
+</script>

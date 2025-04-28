@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo - Vetores</title>
+</head>
+<body>
+    <input type="text" id="iptFrutas">
+    <button onclick="adicionarFruta()">Adicionar Fruta</button>
+    <button onclick="exibirVetor()">Exibir Vetor</button>
+    <button onclick="verResumo()">Resumo do Vetor</button>
+    <div id="div_conteudo"></div>
+</body>
+</html>
+<script>
+    const vetor = [];
+
+    function verResumo() {
+        const tamanhoVetor = vetor.length;
+        const primeiraFruta = vetor[0];
+        const ultimaFruta = vetor[tamanhoVetor - 1];
+
+        div_conteudo.innerHTML = `Tamanho do vetor: ${tamanhoVetor} <br>
+        Primeira fruta: ${primeiraFruta} <br>
+        Última fruta: ${ultimaFruta}`;
+    }
+
+    function adicionarFruta() {
+        let fruta = iptFrutas.value;
+        vetor.push(fruta);
+        alert('Fruta adicionada com sucesso!')
+    }
+
+    //DESAFIO: Alterar a função exibirVetor
+    //para mostrar as frutas nese formato:
+    //1ª fruta - Goiaba
+    //2ª fruta - Uva
+    //3ª fruta - Morango
+    function exibirVetor() {
+        div_conteudo.innerHTML = ``;
+        for(let i = 0; i < vetor.length; i++) {
+            div_conteudo.innerHTML += `${i + 1}ª fruta - ${vetor[i]}<br>`;
+        }
+    }
+</script>

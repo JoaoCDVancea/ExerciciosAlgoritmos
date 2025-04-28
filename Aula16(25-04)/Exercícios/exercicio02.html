@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    button {
+        margin: 10px 0px 10px 0px;
+        padding: 10px;
+    }
+
+    .botoes {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário de Viagens</title>
+</head>
+
+<body>
+    <h1>Diário de Viagens: Do Primeiro ao Último Destino</h1>
+    <div>
+        <div>
+            <p>Destino da viagem:</p>
+            <input type="text" id="iptDestinoViagem">
+        </div>
+        <div class="botoes">
+            <button onclick="adicionarDestino()">Adicionar</button>
+            <button onclick="exibirPrimeiraViagem()">Primeira Viagem</button>
+            <button onclick="exibirTerceiraViagem()">Terceira Viagem</button>
+            <button onclick="exibirUltimaViagem()">Última Viagem</button>
+        </div>
+    </div>
+    <div id="div_conteudo"></div>
+</body>
+
+</html>
+<script>
+    const destinosViagens = [];
+
+    function adicionarDestino() {
+        let destinoViagem = iptDestinoViagem.value;
+
+        if(destinoViagem != '') {
+            destinosViagens.push(destinoViagem);
+            alert('Destino adicionado com sucesso!');  
+        } else {
+            alert('Insira um destino!');
+        }
+    }
+
+    function exibirPrimeiraViagem() {
+        div_conteudo.innerHTML = destinosViagens.length > 0 ? `${destinosViagens[0]}` : `Ainda não viajou`;
+    }
+
+    function exibirTerceiraViagem() {
+        div_conteudo.innerHTML = destinosViagens.length >= 3 ? `${destinosViagens[2]}` : `Ainda não fez a terceira viagem`; 
+    }
+
+    function exibirUltimaViagem() {
+        div_conteudo.innerHTML = destinosViagens.length > 0 ? `${destinosViagens[destinosViagens.length - 1]}` : `Ainda não viajou`;
+    }
+</script>

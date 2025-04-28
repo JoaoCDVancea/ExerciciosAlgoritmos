@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    button {
+        margin: 10px 0px 10px 0px;
+        padding: 10px;
+    }
+
+    .botoes {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Filmes</title>
+</head>
+
+<body>
+    <h1>Lista Viva de Filmes Favoritos</h1>
+    <div>
+        <div>
+            <p>Insira um de seus filmes favoritos: </p>
+            <input type="text" id="iptFilme">
+        </div>
+        <button onclick="adicionarFilme()">Adicionar Filme</button>
+    </div>
+    <div id="div_conteudo"></div>
+</body>
+
+</html>
+<script>
+    const filmes = [];
+
+    function adicionarFilme() {
+        div_conteudo.innerHTML = ``;
+        let filme = iptFilme.value;
+
+        if (filme == '') {
+            alert('Insira um filme válido!');
+            return;
+        }
+
+        filmes.push(filme);
+
+        for (let i = 0; i < filmes.length; i++) {
+            div_conteudo.innerHTML += `${filmes[i]} <br>`;
+        }
+    }
+</script>

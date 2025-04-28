@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    button {
+        margin: 10px 0px 10px 0px;
+        padding: 10px;
+    }
+
+    .botoes {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relembrando Moradias</title>
+</head>
+
+<body>
+    <h1>Relembrando Moradias: Onde Você Já Viveu?</h1>
+    <div>
+        <div>
+            <p>Insira bairros no qual você já morou: </p>
+            <input type="text" id="iptBairro">
+        </div>
+        <button onclick="cadastrarBairro()">Cadastrar Bairro</button>
+        <div>
+            <p>Veja qual foi sua Xº moradia! (Insira um número)</p>
+            <input type="number" id="iptNumero">
+        </div>
+        <button onclick="relembrarMoradia()">Relembrar Moradia</button>
+    </div>
+    <div id="div_conteudo"></div>
+</body>
+
+</html>
+<script>
+    const bairros = [];
+
+    function cadastrarBairro() {
+        let bairro = iptBairro.value;
+        console.log(bairro);
+
+        if (bairro != '') {
+            bairros.push(bairro);
+            div_conteudo.innerHTML = `Bairro cadastrado com sucesso!`;
+        } else {
+            div_conteudo.innerHTML = `Insira um bairro!`;
+        }
+    }
+
+    function relembrarMoradia() {
+        let numero = Number(iptNumero.value);
+
+        if (numero < 1) {
+            div_conteudo.innerHTML = `Insira um número válido!`;
+        } else if (bairros.length == 0) {
+            div_conteudo.innerHTML = `Você ainda não cadastrou nenhum bairro!`;
+        } else if (numero > bairros.length) {
+            div_conteudo.innerHTML = `Número maior do que a quantidade de bairros cadastrados!`;
+        } else {
+            div_conteudo.innerHTML = `${bairros[numero - 1]}`;
+        }
+    }
+</script>
