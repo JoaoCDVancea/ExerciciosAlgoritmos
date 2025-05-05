@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    button {
+        margin: 10px 0px 10px 0px;
+        padding: 10px;
+    }
+
+    .botoes {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Estoque Avançado</title>
+</head>
+
+<body>
+    <h1>Sistema Avançado de Estoque com Análise de Produtos e Estatísticas</h1>
+    <div>
+        <div>
+            <p>Insira o nome do produto:</p>
+            <input type="text" id="iptNome">
+        </div>
+        <div>
+            <p>Insira o preço da compra:</p>
+            <input type="text" id="iptPreco">
+        </div>
+        <div class="botoes">
+            <button onclick="cadastrarProduto()">Cadastrar</button>
+            <button onclick="exibirRelatorio()">Relatório de Estoque</button>
+        </div>
+    </div>
+    <div id="div_conteudo"></div>
+</body>
+
+</html>
+<script>
+    let nomeProdutos = [];
+    let precoProdutos = [];
+
+    function cadastrarProduto() {
+        div_conteudo.innerHTML = ``;
+        let nome = iptNome.value;
+        let preco = Number(iptPreco.value);
+
+        if (nome == '' || preco == '') {
+            div_conteudo.innerHTML = `Preencha todos os campos!`;
+            return;
+        }
+
+        nomeProdutos.push(nome);
+        precoProdutos.push(preco);
+
+        div_conteudo.innerHTML = `Produto cadastrado com sucesso!`;
+    }
+
+    function exibirRelatorio() {
+        div_conteudo.innerHTML = `Total de produtos: ${nomeProdutos.length} <br>`;
+
+        let maiorPreco = precoProdutos[0];
+        let maiorNome = nomeProdutos[0];
+
+        let menorPreco = precoProdutos[0];
+        let menorNome = nomeProdutos[0];
+        let precoTotal = 0;
+        for (let i = 0; i <= nomeProdutos.length - 1; i++) {
+            div_conteudo.innerHTML += `Produto ${i + 1}: ${nomeProdutos[i]} <br> Preço de compra: R$${precoProdutos[i]}. Vender por R$${precoProdutos[i] * 1.25} <br>`;
+
+            if(precoProdutos[i] > maiorPreco) {
+                maiorPreco = precoProdutos[i];
+                maiorNome = nomeProdutos[i];
+            }
+
+            if(precoProdutos[i] < menorPreco) {
+                menorPreco = precoProdutos[i];
+                menorNome = nomeProdutos[i];
+            }
+
+            precoTotal += precoProdutos[i];
+        }
+
+        div_conteudo.innerHTML += `Produto mais caro: ${maiorNome} - R$${maiorPreco} <br>
+            Produto mais barato: ${menorNome} - R$${menorPreco} <br>
+            Soma dos preços dos produtos: R$${precoTotal} <br>
+            Média de preço de vendas dos produtos: R$${precoTotal * 1.25 / precoProdutos.length}`;
+    }
+</script>

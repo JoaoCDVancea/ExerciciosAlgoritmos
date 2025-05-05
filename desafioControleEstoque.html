@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    button {
+        margin: 10px 0px 10px 0px;
+        padding: 10px;
+    }
+
+    .botoes {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Estoque</title>
+</head>
+
+<body>
+    <h1>Controle de Estoque</h1>
+    <div>
+        <div>
+            <p>Insira o nome deste produto: </p>
+            <input type="text" id="iptNome">
+        </div>
+        <div>
+            <p>Insira o código deste produto: </p>
+            <input type="text" id="iptCodigo">
+        </div>
+        <div>
+            <p>Insira a quantidade do produto: </p>
+            <input type="number" id="iptQtd">
+        </div>
+        <div class="botoes">
+            <button onclick="cadastrarProduto()">Cadastrar Produto</button>
+            <button onclick="reporProduto()">Repor Estoque</button>
+            <button onclick="venderProduto()">Vender Produto</button>
+            <button onclick="exibirRelatorio()">Exibir Relatório</button>
+        </div>
+        
+    </div>
+    <div id="div_conteudo"></div>
+</body>
+
+</html>
+<script>
+    let nomes = [];
+    let codigos = [];
+    let quantidades = [];
+    let produtosVendidos = [];
+
+    function cadastrarProduto() {
+        div_conteudo.innerHTML = ``;
+        let nome = iptNome.value;
+        let codigo = iptCodigo.value;
+        let qtd = Number(iptQtd.value);
+
+        if(nome == '' || codigo == '' || qtd == '') {
+            div_conteudo.innerHTML = `Preencha todos os campos para registrar um novo produto`;
+            return;
+        }
+
+        if(qtd < 10) {
+            div_conteudo.innerHTML = `Quantidade abaixo do mínimo (10)`;
+            return;
+        }
+
+        for(let i = 0; i <= codigos.length - 1; i++) {
+            if(codigo == codigos[i]) {
+                div_conteudo.innerHTML = `Código de produto já existente`;
+                return;
+            }
+        }
+
+        nomes.push(nome);
+        codigos.push(codigo);
+        quantidades.push(qtd);
+        produtosVendidos.push(0);
+
+        div_conteudo.innerHTML = `Produto ${nome} registrado com sucesso`;
+    }
+
+    function reporProduto() {
+        div_conteudo.innerHTML = ``;
+        let codigo = iptCodigo.value;
+        let qtd = Number(iptQtd.value);
+
+        let i = 0;
+        let produtoAchado = false;
+        while(i <= codigos.length - 1) {
+            if(codigo == codigos[i]) {
+                produtoAchado = true;
+                break;
+            }
+            i++;
+        }
+
+        if(!produtoAchado) {
+            div_conteudo.innerHTML = `Produto não identificado`;
+            return;
+        }
+
+        if(qtd <= 0) {
+            div_conteudo.innerHTML = `Quantidade inválida`;
+            return;
+        }
+
+        quantidades[i] += qtd;
+
+        div_conteudo.innerHTML = `${qtd}x ${nomes[i]} foi reposto com sucesso`;
+    }
+
+    function venderProduto() {
+        div_conteudo.innerHTML = ``;
+        let codigo = iptCodigo.value;
+        let qtd = Number(iptQtd.value);
+
+        let i = 0;
+        let produtoAchado = false;
+        while(i <= codigos.length - 1) {
+            if(codigo == codigos[i]) {
+                produtoAchado = true;
+                break;
+            }
+            i++;
+        }
+
+        if(!produtoAchado) {
+            div_conteudo.innerHTM = `Produto não identificado`;
+            return;
+        }
+
+        if(qtd <= 0) {
+            div_conteudo.innerHTML = `Insira uma quantidade válida`;
+            return;
+        }
+
+        if(qtd > quantidades[i]) {
+            div_conteudo.innerHTML = `Produto não possui esta quantidade`;
+            return;
+        }
+
+        quantidades[i] -= qtd;
+        produtosVendidos[i] += qtd;
+
+        div_conteudo.innerHTML = `${qtd}x ${nomes[i]} foi vendido com sucesso`;
+
+        let texto = quantidades[i] < 10 ? 'Precisa repor' : 'OK';
+
+        div_conteudo.innerHTML = `Código: ${codigos[i]} | Produto ${nomes[i]} | Quantidade em estoque: ${quantidades[i]} (${texto})`;
+   }
+
+   function exibirRelatorio() {
+        div_conteudo.innerHTML = ``;
+
+        let maiorEstoque = quantidades[0];
+        let indiceMaiorEstoque = 0;
+
+        let menorEstoque = quantidades[0];
+        let indiceMenorEstoque = 0;
+
+        let produtoMaisVendido = produtosVendidos[0];
+        let indiceMaisVendido = 0;
+
+        let produtoMenosVendido = produtosVendidos[0];
+        let indiceMenosVendido = 0;
+
+        for(let i = 0; i <= nomes.length - 1; i++) {
+            let texto = quantidades[i] < 10 ?  'Precisa repor' : 'OK';
+            div_conteudo.innerHTML += `Código: ${codigos[i]} | Produto: ${nomes[i]} | Quantidade em estoque: ${quantidades[i]} (${texto}) | Produtos vendidos: ${produtosVendidos[i]} <br>`;
+
+            if(quantidades[i] > maiorEstoque) {
+                maiorEstoque = quantidades[i];
+                indiceMaiorEstoque = i;
+            }
+
+            if(quantidades[i] < menorEstoque) {
+                menorEstoque = quantidades[i];
+                indiceMenorEstoque = i;
+            }
+
+            if(produtosVendidos[i] > produtoMaisVendido) {
+                produtoMaisVendido = produtosVendidos[i];
+                indiceMaisVendido = i;
+            }
+
+            if(produtosVendidos[i] < produtoMenosVendido) {
+                produtoMenosVendido = produtosVendidos[i];
+                indiceMenosVendido = i;
+            }
+        }
+
+        div_conteudo.innerHTML += `Produto com maior quantidade em estoque: ${nomes[indiceMaiorEstoque]} - ${quantidades[indiceMaiorEstoque]} <br> 
+        Produto com menor quantidade em estoque: ${nomes[indiceMenorEstoque]} - ${quantidades[indiceMenorEstoque]} <br>
+        Produto mais vendido: ${nomes[indiceMaisVendido]} - ${produtosVendidos[indiceMaisVendido]} <br>
+        Produto menos vendido: ${nomes[indiceMenosVendido]} - ${produtosVendidos[indiceMenosVendido]}`;
+   }
+</script>

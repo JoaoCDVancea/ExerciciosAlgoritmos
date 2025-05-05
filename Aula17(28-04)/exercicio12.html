@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    button {
+        margin: 10px 0px 10px 0px;
+        padding: 10px;
+    }
+
+    .botoes {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Filhos</title>
+</head>
+
+<body>
+    <h1>Cadastro de Filhos sem Repetição e Estimativa de Custo Escolar</h1>
+    <div>
+        <div>
+            <p>Insira o nome de um filho seu: </p>
+            <input type="text" id="iptNomeFilho">
+        </div>
+        <button onclick="cadastrarFilho()">Cadastrar</button>
+        <button onclick="atualizarFamilia()">Atualizar Família</button>
+    </div>
+    <div id="div_conteudo"></div>
+</body>
+
+</html>
+<script>
+    const filhos = [];
+
+    function cadastrarFilho() {
+        div_conteudo.innerHTML = ``;
+        const nomeFilho = iptNomeFilho.value;
+
+        if (nomeFilho == '') {
+            alert('Insira um nome!');
+            return;
+        }
+
+        if (filhos.length >= 1) {
+            for (let i = 0; i <= filhos.length - 1; i++) {
+                if (nomeFilho == filhos[i]) {
+                    div_conteudo.innerHTML = 'Não pode mais de 1 filho com o mesmo nome!';
+                    return;
+                }
+            }
+        }
+
+        filhos.push(nomeFilho);
+    }
+
+    function atualizarFamilia() {
+        let qtdFilhos = filhos.length;
+
+        div_conteudo.innerHTML = `Você tem ${filhos.length} filhos <br> Seu custo mensal será aproximadamente R$${qtdFilhos * 3000} se colocá-los em escola particular ou R$${qtdFilhos * 1500} se eles estudarem em escola pública`;
+    }
+</script>

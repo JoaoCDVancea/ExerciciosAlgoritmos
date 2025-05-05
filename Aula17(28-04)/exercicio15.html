@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    button {
+        margin: 10px 0px 10px 0px;
+        padding: 10px;
+    }
+
+    .botoes {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de cadastro</title>
+</head>
+
+<body>
+    <h1>Sistema de Cadastro de Produtos com Relatório de Preço de Venda</h1>
+    <div>
+        <div>
+            <p>Insira o nome do produto:</p>
+            <input type="text" id="iptNome">
+        </div>
+        <div>
+            <p>Insira o preço da compra:</p>
+            <input type="text" id="iptPreco">
+        </div>
+        <div class="botoes">
+            <button onclick="cadastrarProduto()">Cadastrar</button>
+            <button onclick="exibirRelatorio()">Relatório de Estoque</button>
+        </div>
+    </div>
+    <div id="div_conteudo"></div>
+</body>
+
+</html>
+<script>
+    let nomeProdutos = [];
+    let precoProdutos = [];
+
+    function cadastrarProduto() {
+        div_conteudo.innerHTML = ``;
+        let nome = iptNome.value;
+        let preco = Number(iptPreco.value);
+
+        if (nome == '' || preco == '') {
+            div_conteudo.innerHTML = `Preencha todos os campos!`;
+            return;
+        }
+
+        nomeProdutos.push(nome);
+        precoProdutos.push(preco);
+
+        div_conteudo.innerHTML = `Produto cadastrado com sucesso!`;
+    }
+
+    function exibirRelatorio() {
+        div_conteudo.innerHTML = `Total de produtos: ${nomeProdutos.length} <br>`;
+
+        for (let i = 0; i <= nomeProdutos.length - 1; i++) {
+            div_conteudo.innerHTML += `Produto ${i + 1}: ${nomeProdutos[i]} <br> Preço de compra: R$${precoProdutos[i]}. Vender por R$${precoProdutos[i] * 1.25} <br>`;
+        }
+    }
+</script>

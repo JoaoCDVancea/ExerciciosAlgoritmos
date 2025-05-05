@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    button {
+        margin: 10px 0px 10px 0px;
+        padding: 10px;
+    }
+
+    .botoes {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Ônibus</title>
+</head>
+
+<body>
+    <h1>Registro de Linhas de Ônibus com Pesquisa de Histórico</h1>
+    <div>
+        <div>
+            <p>Insira os nomes das linhas de ônibus que você pega durante a semana: </p>
+            <input type="text" id="iptLinhaOnibus">
+        </div>
+        <button onclick="registrarOnibus()">Gravar busão</button>
+        <div>
+            <p>Pesquise uma linha no seu histórico: </p>
+            <input type="text" id="iptLinhaPesquisa">
+        </div>
+        <button onclick="pesquisarLinha()">Pesquisar</button>
+    </div>
+    <div id="div_conteudo"></div>
+</body>
+
+</html>
+<script>
+    const linhasOnibus = [];
+
+    function registrarOnibus() {
+        div_conteudo.innerHTML = ``;
+        const linhaOnibus = iptLinhaOnibus.value;
+
+        if (linhaOnibus == '') {
+            alert('Insira uma linha de ônibus!');
+            return;
+        }
+
+        linhasOnibus.push(linhaOnibus);
+
+        for (let i = linhasOnibus.length - 1; i >= 0; i--) {
+            div_conteudo.innerHTML += `${linhasOnibus[i]} <br>`;
+        }
+
+
+    }
+
+    function pesquisarLinha() {
+        const linha = iptLinhaPesquisa.value;
+
+        if(linha == '') {
+            alert('Insira uma linha para a pesquisa!');
+            return;
+        }
+
+        let qtdUtilizada = 0;
+        const ordemUtilizada = [];
+
+        for(let i = 0; i <= linhasOnibus.length - 1; i++) {
+            if(linhasOnibus[i] == linha) {
+                ordemUtilizada.push(i + 1);
+                qtdUtilizada++;
+            }
+        }
+
+        div_conteudo.innerHTML = qtdUtilizada > 0 ? `Você já pegou essa linha ${qtdUtilizada} vezes, nessa ordem: ${ordemUtilizada}` : `Você nunca pegou essa linha`;
+    }
+</script>

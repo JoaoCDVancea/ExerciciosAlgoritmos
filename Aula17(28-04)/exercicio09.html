@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    button {
+        margin: 10px 0px 10px 0px;
+        padding: 10px;
+    }
+
+    .botoes {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Projetos</title>
+</head>
+
+<body>
+    <h1>Cadastro de Projetos e Classificação de Experiência Profissional</h1>
+    <div>
+        <div>
+            <p>Insira os projetos que você já criou: </p>
+            <input type="text" id="iptProjeto">
+        </div>
+        <button onclick="cadastrarProjeto()">Registrar Projeto</button>
+        <button onclick="exibirProjetos()">Mostrar Projetos</button>
+    </div>
+    <div id="div_conteudo"></div>
+</body>
+
+</html>
+<script>
+    const projetos = [];
+
+    function cadastrarProjeto() {
+        const projeto = iptProjeto.value;
+
+        if (projeto == '') {
+            alert('Insira um projeto!');
+            return;
+        }
+
+        projetos.push(projeto);
+        let qtdProjetos = projetos.length;
+        let tituloProfissional;
+
+        if (qtdProjetos <= 4) {
+            tituloProfissional = 'Júnior';
+        } else if (qtdProjetos <= 12) {
+            tituloProfissional = 'Pleno';
+        } else {
+            tituloProfissional = 'Senior';
+        }
+
+        div_conteudo.innerHTML = `Você já fez ${qtdProjetos} projetos. Por isso você é um profissional ${tituloProfissional}`;
+    }
+
+    function exibirProjetos() {
+        div_conteudo.innerHTML = ``;
+        for(let i = projetos.length - 1; i >= 0; i--) {
+            div_conteudo.innerHTML += `${projetos[i]} <br>`;
+        }
+    }
+</script>

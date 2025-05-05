@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    button {
+        margin: 10px 0px 10px 0px;
+        padding: 10px;
+    }
+
+    .botoes {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Estoque</title>
+</head>
+
+<body>
+    <h1>Controle de Estoque de Produtos com Cálculo de Valor Total</h1>
+    <div>
+        <div>
+            <p>Insira o preço de um produto: </p>
+            <input type="number" id="iptPreco">
+        </div>
+        <button onclick="cadastrarPreco()">Cadastrar</button>
+        <button onclick="atualizarEstoque()">Atualizar Estoque</button>
+    </div>
+    <div id="div_conteudo"></div>
+</body>
+
+</html>
+<script>
+    const precos = [];
+
+    function cadastrarPreco() {
+        const preco = Number(iptPreco.value);
+
+        if (preco == '') {
+            alert('Insira um valor!');
+            return;
+        }
+
+        precos.push(preco);
+    }
+
+    function atualizarEstoque() {
+        div_conteudo.innerHTML = ``;
+        let precoTotal = 0;
+
+        for(let i = precos.length - 1; i >= 0; i--) {
+            div_conteudo.innerHTML += `${precos[i]} <br>`;
+            precoTotal += precos[i];
+        }
+
+        div_conteudo.innerHTML += `Você tem ${precos.length} produtos cadastrados em estoque <br>`;
+        div_conteudo.innerHTML += `Seu estoque vale R$${precoTotal}`;
+    }
+</script>

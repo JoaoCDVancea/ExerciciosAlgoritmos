@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    button {
+        margin: 10px 0px 10px 0px;
+        padding: 10px;
+    }
+
+    .botoes {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campanha de Time</title>
+</head>
+
+<body>
+    <h1>Controle de Campanha de Time de Futebol com Análise de Aproveitamento</h1>
+    <div>
+        <div>
+            <p>Indique o resultado:</p>
+            <select name="" id="iptResultado">
+                <option value="vitoria">Vitória</option>
+                <option value="empate">Empate</option>
+                <option value="derrota">Derrota</option>
+            </select>
+        </div>
+        <button onclick="registrarJogo()">Registrar jogo</button>
+        <div>
+            <p>Indique qual jogo deseja saber o resultado:</p>
+            <input type="number" id="iptJogo" oninput="selecionarJogo()">
+        </div>
+    </div>
+    <div id="div_conteudo"></div>
+    <div id="div_resultado"></div>
+</body>
+
+</html>
+<script>
+    let resultados = [];
+
+    function registrarJogo() {
+        let resultado = iptResultado.value;
+
+        resultados.push(resultado);
+
+        let vitorias = 0;
+        let derrotas = 0;
+        let empates = 0;
+        let pontos = 0;
+
+        for(let i = 0; i <= resultados.length - 1; i++) {
+            let valor = resultados[i];
+
+            if(valor == 'vitoria') {
+                vitorias++;
+                pontos += 3;
+            } else if(valor == 'derrota') {
+                derrotas++;
+            } else {
+                empates++;
+                pontos += 1;
+            }
+        }
+
+        let aproveitamento = pontos / (resultados.length * 3) * 100;
+
+        div_conteudo.innerHTML = `O time teve: ${vitorias} vitórias, ${empates} empates, ${derrotas} derrotas <br>
+            Pontuação total: ${pontos} <br>
+            Aproveitamento: ${aproveitamento.toFixed(2)}%`;
+    }
+
+    function selecionarJogo() {
+        let jogo = Number(iptJogo.value);
+        let resultadoJogo = resultados[jogo - 1];
+
+        if(resultadoJogo == null) {
+            div_resultado.innerHTML = `Não foi cadastrado ${jogo}º jogo`;
+            return;
+        }
+
+        let texto;
+
+        if(resultadoJogo == 'vitoria') {
+            texto = `ganhou`;
+        } else if(resultadoJogo == 'derrota') {
+            texto =  `perdeu`;
+        } else {
+            texto = `empatou`;
+        }
+
+        div_resultado.innerHTML= `No ${jogo}º, o time ${texto}`;
+    }
+</script>

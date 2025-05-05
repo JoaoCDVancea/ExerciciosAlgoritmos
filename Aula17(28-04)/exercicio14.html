@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    button {
+        margin: 10px 0px 10px 0px;
+        padding: 10px;
+    }
+
+    .botoes {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de números</title>
+</head>
+
+<body>
+    <h1>Registro de Números com Histórico, Maior e Menor Valor</h1>
+    <div>
+        <div>
+            <p>Digite um número qualquer:</p>
+            <input type="text" id="iptNumero">
+        </div>
+        <button onclick="analisarHistorico()">Analisar Histórico</button>
+    </div>
+    <div id="div_conteudo"></div>
+</body>
+
+</html>
+<script>
+    let numeros = [];
+
+    function analisarHistorico() {
+        div_conteudo.innerHTML = ``;
+        let numero = Number(iptNumero.value);
+
+        if (numero == '') {
+            div_conteudo.innerHTML = `Insira um número!`;
+            return;
+        }
+
+        numeros.push(numero);
+
+        let maior = numero;
+        let menor = numero;
+
+        for(let i = 0; i <= numeros.length - 1; i++) {
+            div_conteudo.innerHTML += `${i + 1}º Número: ${numeros[i]} <br>`;
+
+            if(numeros[i] > maior) {
+                maior = numeros[i];
+            }
+
+            if(numeros[i] < menor) {
+                menor = numeros[i];
+            }
+        }
+
+        div_conteudo.innerHTML += `Maior: ${maior} <br> Menor: ${menor}`;
+    }
+</script>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    button {
+        margin: 10px 0px 10px 0px;
+        padding: 10px;
+    }
+
+    .botoes {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Alunos</title>
+</head>
+
+<body>
+    <h1>Cadastro de Alunos com Exibição Invertida</h1>
+    <div>
+        <div>
+            <p>Cadastre nomes de alunos: </p>
+            <input type="text" id="iptNomeAluno">
+        </div>
+        <button onclick="cadastrar()">Cadastrar</button>
+    </div>
+    <div id="div_conteudo"></div>
+</body>
+
+</html>
+<script>
+    const nomesAlunos = [];
+
+    function cadastrar() {
+        div_conteudo.innerHTML = ``;
+        const nome = iptNomeAluno.value;
+
+        nome != '' ? nomesAlunos.push(nome) : alert('Insira um nome!');
+
+        for (let i = nomesAlunos.length - 1; i >= 0; i--) {
+            div_conteudo.innerHTML += `${nomesAlunos[i]} <br>`;
+        }
+    }
+</script>
